@@ -1,5 +1,6 @@
 package br.com.leofabris.icoViewer;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import java.awt.Cursor;
 import javax.swing.JInternalFrame;
 
@@ -20,9 +21,12 @@ public class Principal extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         menuArquivo = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenuItem();
-        menuConverter = new javax.swing.JMenu();
+        jMenu2 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
         menuArquivoUnico = new javax.swing.JMenuItem();
         menuDiretorio = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Conversão de ICO para PNG");
@@ -50,7 +54,9 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1.add(menuArquivo);
 
-        menuConverter.setText("Converter");
+        jMenu2.setText("Conversão");
+
+        jMenu3.setText("ICO -> PNG");
 
         menuArquivoUnico.setText("Arquivo Único");
         menuArquivoUnico.addActionListener(new java.awt.event.ActionListener() {
@@ -58,7 +64,7 @@ public class Principal extends javax.swing.JFrame {
                 menuArquivoUnicoActionPerformed(evt);
             }
         });
-        menuConverter.add(menuArquivoUnico);
+        jMenu3.add(menuArquivoUnico);
 
         menuDiretorio.setText("Diretório");
         menuDiretorio.addActionListener(new java.awt.event.ActionListener() {
@@ -66,9 +72,23 @@ public class Principal extends javax.swing.JFrame {
                 menuDiretorioActionPerformed(evt);
             }
         });
-        menuConverter.add(menuDiretorio);
+        jMenu3.add(menuDiretorio);
 
-        jMenuBar1.add(menuConverter);
+        jMenu2.add(jMenu3);
+
+        jMenu4.setText("PNG -> ICO");
+
+        jMenuItem1.setText("Arquivo Único");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
+        jMenu2.add(jMenu4);
+
+        jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
 
@@ -102,17 +122,14 @@ public class Principal extends javax.swing.JFrame {
         setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
     }//GEN-LAST:event_menuArquivoUnicoActionPerformed
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        setCursor(new Cursor(Cursor.WAIT_CURSOR));
+        adicionaPainel(new PNGtoICOUnico());
+        setCursor(new Cursor(Cursor.DEFAULT_CURSOR));
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
     public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Principal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
+        FlatLightLaf.setup();
 
         java.awt.EventQueue.invokeLater(() -> {
             new Principal().setVisible(true);
@@ -121,10 +138,13 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JDesktopPane desktop;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenu menuArquivo;
     private javax.swing.JMenuItem menuArquivoUnico;
-    private javax.swing.JMenu menuConverter;
     private javax.swing.JMenuItem menuDiretorio;
     private javax.swing.JMenuItem menuSair;
     // End of variables declaration//GEN-END:variables
